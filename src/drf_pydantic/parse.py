@@ -130,6 +130,7 @@ def _convert_field(field: pydantic.fields.ModelField) -> serializers.Field:
         field.type_, Enum
     ):
         extra_kwargs['enum'] = field.type_
+        return FIELD_MAP[Enum](**extra_kwargs)
 
     # Scalar field
     if field.outer_type_ is field.type_:
