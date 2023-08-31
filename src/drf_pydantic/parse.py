@@ -128,6 +128,12 @@ def _convert_field(field: pydantic.fields.ModelField) -> serializers.Field:
         extra_kwargs["max_length"] = field.type_.max_length
 
     if inspect.isclass(field.type_) and issubclass(
+            field.type_, pydantic.types.ConstrainedDecimal
+    ):
+        extra_kwargs["decimal_places"] = field.type_.decimal_places
+        extra_kwargs["max_digits"] = field.type_.max_digits
+
+    if inspect.isclass(field.type_) and issubclass(
         field.type_, Enum
     ):
         extra_kwargs['enum'] = field.type_
