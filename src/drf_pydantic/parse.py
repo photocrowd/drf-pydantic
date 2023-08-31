@@ -40,7 +40,7 @@ FIELD_MAP: dict[type, type[serializers.Field]] = {
     # Constraint fields
     pydantic.ConstrainedStr: serializers.CharField,
     pydantic.ConstrainedInt: serializers.IntegerField,
-    pydantic.ConstrainedDecimal: serializers.DecimalField
+    pydantic.ConstrainedDecimal: serializers.DecimalField,
     # Enum fields
     Enum: EnumField
 }
